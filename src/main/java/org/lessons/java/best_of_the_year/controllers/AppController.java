@@ -40,4 +40,30 @@ public class AppController {
 
         return songsList;
     }
+
+    private String getMoviesToString(List<Movie> moviesList) {
+        String moviesString = "";
+        for (int i = 0; i < moviesList.size(); i++) {
+            moviesString += moviesList.get(i).getName();
+
+            if (i < moviesList.size() - 1) {
+                moviesString += ", ";
+            }
+        }
+
+        return moviesString;
+    }
+
+    private String getSongsToString(List<Song> songsList) {
+        String songsString = "";
+        for (int i = 0; i < songsList.size(); i++) {
+            songsString += songsList.get(i).getName();
+
+            if (i < songsList.size() - 1) {
+                songsString += ", ";
+            }
+        }
+
+        return songsString;
+    }
 }
