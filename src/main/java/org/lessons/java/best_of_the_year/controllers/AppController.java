@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -30,6 +31,30 @@ public class AppController {
     public String songs(Model model) {
         model.addAttribute("songsList", this.getSongsToString(getBestSongs()));
         return "songs";
+    }
+
+    @GetMapping("/movies/{id}")
+    public String movie(Model model, @PathVariable("id") int id) {
+        for (Movie movie : this.getBestMovies()) {
+            if (movie.getId() == id) {
+                model.addAttribute("movie", movie);
+                break;
+            }
+        }
+
+        return "movie";
+    }
+
+    @GetMapping("/songs/{id}")
+    public String song(Model model, @PathVariable("id") int id) {
+        for (Song song : this.getBestSongs()) {
+            if (song.getId() == id) {
+                model.addAttribute("song", song);
+                break;
+            }
+        }
+
+        return "song";
     }
     
 
