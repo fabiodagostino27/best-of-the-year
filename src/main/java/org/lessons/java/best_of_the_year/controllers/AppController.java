@@ -6,8 +6,11 @@ import java.util.List;
 import org.lessons.java.best_of_the_year.classes.Movie;
 import org.lessons.java.best_of_the_year.classes.Song;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 @RequestMapping("/")
@@ -16,6 +19,19 @@ public class AppController {
     public String home() {
         return "home";
     }
+
+    @GetMapping("/movies")
+    public String movies(Model model) {
+        model.addAttribute("moviesList", this.getMoviesToString(getBestMovies()));
+        return "movies";
+    }
+
+    @GetMapping("/songs")
+    public String songs(Model model) {
+        model.addAttribute("songsList", this.getSongsToString(getBestSongs()));
+        return "songs";
+    }
+    
 
     private List<Movie> getBestMovies() {
         List<Movie> moviesList = new ArrayList<>();
