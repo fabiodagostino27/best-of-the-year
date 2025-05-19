@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Best of the Year</title>
-    
+
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.5/css/bootstrap.min.css}" />
 </head>
+
 <body>
-    <h1>Songs</h1>
-    <p th:text="${songsList}"></p>
+    <header>
+        <th:block th:replace="~{fragments :: nav}" />
+    </header>
+
+    <main class="container text-center">
+        <th:block th:replace="~{fragments :: bestList(list = ${songs}, listName = 'songs')}" />
+    </main>
 </body>
+
 </html>

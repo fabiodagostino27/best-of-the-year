@@ -8,6 +8,12 @@
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.5/css/bootstrap.min.css}" />
 </head>
 <body>
-    <h1>Best of the Year by Fabio</h1>
+    <header>
+        <th:block th:replace="~{fragments :: nav}" />
+    </header>
+    <main class="container text-center my-3">
+        <h1 class="mb-3">Best of the Year by Fabio</h1>
+        <img th:src="@{img/img-best-of-the-year.jpg}" class="img-fluid w-25" alt="immagine">
+    </main>
 </body>
 </html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best of the Year</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.5/css/bootstrap.min.css}" />
+</head>
+
+<body>
+    <nav th:fragment="nav" class="navbar navbar-expand navbar-light bg-light p-4">
+        <div class="nav navbar-nav">
+            <a class="nav-item nav-link active" th:href="@{/}" aria-current="page">Home</a>
+            <a class="nav-item nav-link" th:href="@{/movies}">Movies</a>
+            <a class="nav-item nav-link" th:href="@{/songs}">Songs</a>
+        </div>
+    </nav>
+
+    <div class="my-3" th:fragment="bestList(list, listName)">
+        <ul class="list-group my-2">
+            <h1 class="text-capitalize">[[${listName}]]</h1>
+            <a class="list-group-item" th:each="element : ${list}" th:text="${element.name}"
+                th:href="@{${listName} + '/' + ${element.id}}"></a>
+        </ul>
+    </div>
+
+    <main class="container my-3 text-center" th:fragment="singleMain(element, elementName)">
+        <h1 th:if="${element != null}">[[${element.name}]]</h1>
+        <h1 th:unless="${element != null}"><span class="text-capitalize">[[${elementName}]]</span> not found!</h1>
+    </main>
+
+</body>
+
+</html>

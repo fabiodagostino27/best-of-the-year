@@ -23,13 +23,13 @@ public class AppController {
 
     @GetMapping("/movies")
     public String movies(Model model) {
-        model.addAttribute("moviesList", this.getMoviesToString(getBestMovies()));
+        model.addAttribute("movies", this.getBestMovies());
         return "movies";
     }
 
     @GetMapping("/songs")
     public String songs(Model model) {
-        model.addAttribute("songsList", this.getSongsToString(getBestSongs()));
+        model.addAttribute("songs", this.getBestSongs());
         return "songs";
     }
 
